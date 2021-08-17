@@ -1,2 +1,0 @@
-# Prevents the node_modules folder to be copied to the docker deamon when building the image
-node_modules/
