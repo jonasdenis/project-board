@@ -34,3 +34,5 @@ frontend/project-board-app/src/app/project/project.component.ts
 frontend/project-board-app/src/app/project/project.component.html
 frontend/project-board-app/src/app/project/project.component.ts
 frontend/project-board-app/src/app/project/project.component.ts
+*.DS_Store
+.gradle
