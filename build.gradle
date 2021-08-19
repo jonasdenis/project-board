@@ -118,3 +118,14 @@ task('dockerCopy', type: DefaultTask, dependsOn: bootJar) {
 clean.doFirst {
 	delete 'docker/temp'
 }
+allprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.apache.velocity' && details.requested.name == 'velocity-engine-core') {
+                details.useVersion '2.2'
+                details.because 'changed during dep check analyse'
+            }
+
+        }
+    }
+}
