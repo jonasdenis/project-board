@@ -118,3 +118,14 @@ task('dockerCopy', type: DefaultTask, dependsOn: bootJar) {
 clean.doFirst {
 	delete 'docker/temp'
 }
+allprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.keycloak.bom' && details.requested.name == 'keycloak-adapter-bom') {
+                details.useVersion '5.0.0'
+                details.because 'changed during dep check analyse'
+            }
+
+        }
+    }
+}
