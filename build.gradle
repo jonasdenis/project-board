@@ -118,3 +118,14 @@ task('dockerCopy', type: DefaultTask, dependsOn: bootJar) {
 clean.doFirst {
 	delete 'docker/temp'
 }
+allprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.springframework.boot') {
+                details.useVersion '2.2.10.RELEASE'
+                details.because 'changed during dep check analyse'
+            }
+
+        }
+    }
+}
